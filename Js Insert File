@@ -12,6 +12,6 @@
 (function () {
     console.log("Yard Loader running... Loading stockYard.js");
     const script = document.createElement("script");
-    script.src = "https://itsnarahari.github.io/gcp-terraform/stockYard.js";
+    script.src = "https://chinnanaik47.github.io/bookingscripts/StockYard.js";
     document.body.appendChild(script);
 })();
