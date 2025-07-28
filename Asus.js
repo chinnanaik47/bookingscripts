@@ -11,7 +11,7 @@
       var data =
         document.getElementsByClassName("GridviewScrollItem")[i].cells[2]
           .innerHTML;
-      if (data.indexOf("Mogallapally Desiltation(2025)") != -1) {
+      if (data.indexOf("Veerapuram De-Siltation(2025)") != -1) {
         $("input[type='radio']")[i].click();
         clearInterval(intId);
         break;
