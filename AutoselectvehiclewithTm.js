@@ -9,7 +9,7 @@
 // ==/UserScript==
 
 (function () {
-    console.log("Auto Select Vehicles... Loading AutoSelectVehiclesWithCounter.js.js");
+    console.log("Auto Select Vehicles... Loading AutoSelectVehiclesWithCounter.js");
     const script = document.createElement("script");
     script.src = "https://chinnanaik47.github.io/bookingscripts/AutoSelectVehiclesWithCounter.js";
     document.body.appendChild(script);
