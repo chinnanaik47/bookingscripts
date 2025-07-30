@@ -70,11 +70,11 @@ document.body.appendChild(myLayer);
             });
     }
  
-    // Function to check if lbltime reaches "Timer : 118"
+    // Function to check if lbltime reaches "Timer : 120"
     function checkTimerValue() {
         const lbltime = document.getElementById('lbltime');
-        if (lbltime && lbltime.innerHTML.trim() === 'Timer : 118') {
-            // If the timer value is "Timer : 115", fetch and display data
+        if (lbltime && lbltime.innerHTML.trim() === 'Timer : 120') {
+            // If the timer value is "Timer : 120", fetch and display data
             fetchAndDisplayData();
             // Disconnect the observer to stop watching for changes
             observer.disconnect();
