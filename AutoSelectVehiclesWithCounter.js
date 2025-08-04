@@ -14,11 +14,11 @@
         const vehicles = [
         "",  
         "",              // index 0 unused
-        "AP24TB3469",       // count = 2
+        "TS02UB5877",       // count = 2
         "TS05UA4552",       // count = 3
-        "TS02UB5877",        // count = 4
-        "AP26TK2292",       // count = 5
-        "AP39T7947"         // count = 6
+        "TS03UB5699",        // count = 4
+        "TS05UC9429",       // count = 5
+        "TS30T3599"         // count = 6
     ];
  
     // Function to fetch count value from API and display it
