@@ -14,8 +14,8 @@
         const vehicles = [
         "",  
         "",              // index 0 unused
-        "TS06UB8558",       // count = 2
-        "TS30T3677",       // count = 3
+        "TS02UB5877",       // count = 2
+        "TG26T2232",       // count = 3
         "TS30T3599",        // count = 4
         "TS05UC9429",       // count = 5
         "TS30T3599"         // count = 6
