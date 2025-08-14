@@ -15,10 +15,10 @@
         "",  
         "",              // index 0 unused
         "TS30T3677",       // count = 2
-        "TS06UB8558",       // count = 3
-        "AP26TK2292",        // count = 4
-        "AP39T7947",       // count = 5
-        "TS30T3599"         // count = 6
+        "TS05UC9429",       // count = 3
+        "TS06UB8558",        // count = 4
+        "TS30T3599",       // count = 5
+        "AP26TK2292"         // count = 6
     ];
  
     // Function to fetch count value from API and display it
