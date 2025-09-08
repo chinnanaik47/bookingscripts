@@ -2,6 +2,9 @@
   console.log(
     "Stock Yard script loaded successfully from GitHub and running..."
   );
+    document.getElementsByClassName("Dropdown")[0].value = 24;
+  PopulateGrid(24);
+  console.log("Dropdown value set to 24 and grid populated.");
 var SSOTP_VERSION = 3; // enter your ssotp version from 0 to 10
 var TOKEN = "93R9U2"; // enter token
 
