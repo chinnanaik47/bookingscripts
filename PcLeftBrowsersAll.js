@@ -11,11 +11,11 @@
       var data =
         document.getElementsByClassName("GridviewScrollItem")[i].cells[2]
           .innerHTML;
-      if (data.indexOf("Yakannagudem-I SBA (2025)") != -1) {
+      if (data.indexOf("Chunchupally-VI SBA (2025)") != -1) {
         $("input[type='radio']")[i].click();
         clearInterval(intId);
         break;
       }
     }
-  }, 1010);
+  }, 1100);
 })();
