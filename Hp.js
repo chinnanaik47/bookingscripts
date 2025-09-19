@@ -11,7 +11,7 @@
       var data =
         document.getElementsByClassName("GridviewScrollItem")[i].cells[2]
           .innerHTML;
-      if (data.indexOf("Chinnaravigudem De-Siltation (2025)") != -1) {
+      if (data.indexOf("Kudunuru SBAB5 (2025)") != -1) {
         $("input[type='radio']")[i].click();
         clearInterval(intId);
         break;
