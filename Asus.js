@@ -9,7 +9,7 @@
 (function () {
   'use strict';
   /*** USER CONFIG ***/
-  const RETRY_START_TIME_STR = '08:43:00:000'; // Format: HH:MM:SS:ms
+  const RETRY_START_TIME_STR = '08:48:00:000'; // Format: HH:MM:SS:ms
   const CLICK_RETRY_INTERVAL = 1; // ms between retries when clicking transport link
   const NO_RECORDS_TEXT = 'No Records Found'; // Text to trigger reload
   const TARGET_TEXT = 'Adibatla SB Coarse';
