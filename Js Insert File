@@ -3,9 +3,9 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  Loads yard logic dynamically
-// @match        https://onlinebooking.sand.telangana.gov.in/*
+// @match        https://sand.telangana.gov.in/TGSandBazaar/InnerPages/SandBazaarBookingNew.aspx/*
 // @author       You
-// @include      https://onlinebooking.sand.telangana.gov.in/*
+// @include      https://sand.telangana.gov.in/TGSandBazaar/InnerPages/SandBazaarBookingNew.aspx/*
 // @grant        none
 // ==/UserScript==
 
