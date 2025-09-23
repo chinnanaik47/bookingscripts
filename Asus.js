@@ -1,21 +1,75 @@
+// ==UserScript==
+// @name     Sand Bazar OWN TRANSPORT BOOKING Ultra-Fast Auto-Click with Only "No Records Found" Handler (No Retry Limit)
+// @namespace  http://tampermonkey.net/
+// @version   3.3
+// @description Starts retry clicking OWN TRANSPORT BOOKING at given precise time with millisecond accuracy, retries booking page if "No Records Found" appears, no retry time limit
+// @match    https://sand.telangana.gov.in/TGSandBazaar/InnerPages/SandBazaarBookingNew.aspx
+// @grant    none
+// ==/UserScript==
 (function () {
-  console.log(
-    "Stock Yard script loaded successfully from GitHub and running..."
-  );
-  document.getElementsByClassName("Dropdown")[0].value = 45;
-  PopulateGrid(45);
-  console.log("Dropdown value set to 45 and grid populated.");
-
-  var intId = setInterval(function () {
-    for (var i = 0; i < 30; i++) {
-      var data =
-        document.getElementsByClassName("GridviewScrollItem")[i].cells[2]
-          .innerHTML;
-      if (data.indexOf("Chunchupally-VI SBA (2025)") != -1) {
-        $("input[type='radio']")[i].click();
-        clearInterval(intId);
-        break;
+  'use strict';
+  /*** USER CONFIG ***/
+  const RETRY_START_TIME_STR = '09:59:30:000'; // Format: HH:MM:SS:ms
+  const CLICK_RETRY_INTERVAL = 1; // ms between retries when clicking transport link
+  const NO_RECORDS_TEXT = 'No Records Found'; // Text to trigger reload
+  const TARGET_TEXT = 'Adibatla SB Coarse';
+  const NO_RECORDS_RETRY_INTERVAL = 10;
+  let retryIntervalId = null;
+  let clickDone = false;
+  let noRecordsIntervalId = null;
+  /*** FASTER TIME FUNCTION ***/
+  function getDelayUntilStart() {
+    const [hh,
+    mm,
+    ss,
+    ms] = RETRY_START_TIME_STR.split(':').map(Number);
+    const target = new Date();
+    target.setHours(hh, mm, ss, ms);
+    const delay = target.getTime() - Date.now();
+    return delay > 0 ? delay : 0;
+  }
+  function isBookingPage() {
+    return location.pathname.includes('/InnerPages/SandBazaarBookingNew.aspx');
+  }
+  function startRetryClicking() {
+      if (isBookingPage()) {
+        console.log("Script Started listening")
+        retry();
+        return;
       }
+  }
+  function retry() {
+    if (noRecordsIntervalId) return;
+    noRecordsIntervalId = setInterval(() =>{
+      const bodyText = document.body ? document.body.textContent : '';
+      // Reload if target text NOT found (regardless of other text)
+      if (!bodyText.toLowerCase().includes(TARGET_TEXT.toLowerCase())) {
+        location.reload();
+        clearInterval(noRecordsIntervalId);
+        noRecordsIntervalId = null;
+      }      // Reload if "No Records Found" text appears
+       else if (bodyText.includes(NO_RECORDS_TEXT)) {
+        location.reload();
+        clearInterval(noRecordsIntervalId);
+        noRecordsIntervalId = null;
+      }      // Otherwise, target present and no errors, stop retrying
+       else {
+        clearInterval(noRecordsIntervalId);
+        noRecordsIntervalId = null;
+      }
+    }, NO_RECORDS_RETRY_INTERVAL);
+  }
+  function initAutomationAtScheduledTime() {
+    const delay = getDelayUntilStart();
+    if (delay == 0) {
+      startRetryClicking();
+    } else {
+      setTimeout(() =>startRetryClicking(), delay);
     }
-  }, 1100);
-})();
+  }  /*** PAGE ENTRY ***/
+
+  window.addEventListener('DOMContentLoaded', () =>{
+    sessionStorage.setItem("sandAutoFilled", "no");
+    initAutomationAtScheduledTime();
+  });
+}) ();
