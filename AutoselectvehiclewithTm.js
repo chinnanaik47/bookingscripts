@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Fetch data from an API and display it on the webpage
 // @author       You
-// @match        https://onlinebooking.sand.telangana.gov.in/Order/NEWBOOKING.aspx?KLM=*
+// @match        https://sand.telangana.gov.in/TGSandBazaar/InnerPages/SandBazaarBookingNew.aspx
 // @grant        none
 // ==/UserScript==
 
