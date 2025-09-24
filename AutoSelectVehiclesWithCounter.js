@@ -1,75 +1,94 @@
 // ==UserScript==
-// @name     Sand Bazar OWN TRANSPORT BOOKING Ultra-Fast Auto-Click with Only "No Records Found" Handler (No Retry Limit)
-// @namespace  http://tampermonkey.net/
-// @version   3.3
-// @description Starts retry clicking OWN TRANSPORT BOOKING at given precise time with millisecond accuracy, retries booking page if "No Records Found" appears, no retry time limit
-// @match    https://sand.telangana.gov.in/TGSandBazaar/InnerPages/SandBazaarBookingNew.aspx
-// @grant    none
+// @name         Fetch and Display Data1
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Fetch data from an API and display it on the webpage
+// @author       You
+// @match        https://onlinebooking.sand.telangana.gov.in/Order/NEWBOOKING.aspx?KLM=*
+// @grant        none
 // ==/UserScript==
-(function () {
-  'use strict';
-  /*** USER CONFIG ***/
-  const RETRY_START_TIME_STR = '09:59:30:000'; // Format: HH:MM:SS:ms
-  const CLICK_RETRY_INTERVAL = 1; // ms between retries when clicking transport link
-  const NO_RECORDS_TEXT = 'No Records Found'; // Text to trigger reload
-  const TARGET_TEXT = 'Adibatla SB Fine SCap';
-  const NO_RECORDS_RETRY_INTERVAL = 10;
-  let retryIntervalId = null;
-  let clickDone = false;
-  let noRecordsIntervalId = null;
-  /*** FASTER TIME FUNCTION ***/
-  function getDelayUntilStart() {
-    const [hh,
-    mm,
-    ss,
-    ms] = RETRY_START_TIME_STR.split(':').map(Number);
-    const target = new Date();
-    target.setHours(hh, mm, ss, ms);
-    const delay = target.getTime() - Date.now();
-    return delay > 0 ? delay : 0;
-  }
-  function isBookingPage() {
-    return location.pathname.includes('/InnerPages/SandBazaarBookingNew.aspx');
-  }
-  function startRetryClicking() {
-      if (isBookingPage()) {
-        console.log("Script Started listening")
-        retry();
-        return;
-      }
-  }
-  function retry() {
-    if (noRecordsIntervalId) return;
-    noRecordsIntervalId = setInterval(() =>{
-      const bodyText = document.body ? document.body.textContent : '';
-      // Reload if target text NOT found (regardless of other text)
-      if (!bodyText.toLowerCase().includes(TARGET_TEXT.toLowerCase())) {
-        location.reload();
-        clearInterval(noRecordsIntervalId);
-        noRecordsIntervalId = null;
-      }      // Reload if "No Records Found" text appears
-       else if (bodyText.includes(NO_RECORDS_TEXT)) {
-        location.reload();
-        clearInterval(noRecordsIntervalId);
-        noRecordsIntervalId = null;
-      }      // Otherwise, target present and no errors, stop retrying
-       else {
-        clearInterval(noRecordsIntervalId);
-        noRecordsIntervalId = null;
-      }
-    }, NO_RECORDS_RETRY_INTERVAL);
-  }
-  function initAutomationAtScheduledTime() {
-    const delay = getDelayUntilStart();
-    if (delay == 0) {
-      startRetryClicking();
-    } else {
-      setTimeout(() =>startRetryClicking(), delay);
+ 
+(function() {
+    'use strict';
+ 
+        const vehicles = [
+        "",  
+        "",              // index 0 unused
+        "TS08UD1155",       // count = 2
+        "TS01UB8199",       // count = 3
+        "AP24TB3469",        // count = 4
+        "TG26T2232",       // count = 5
+        "TS06UB8558"         // count = 6
+    ];
+ 
+    // Function to fetch count value from API and display it
+    function fetchAndDisplayData() {
+        // Fetch count value from API
+        fetch('https://api.counterapi.dev/v1/chinna/97000/up')
+            .then(response => response.json())
+            .then(data => {
+                const countValue = data.count;
+                console.log('Count value:', countValue);
+                const vehicleNumber = vehicles[countValue] || "";
+                console.log('Vehicle number:', vehicleNumber);
+                // Create and style the layer if it doesn't exist
+                var myLayer = document.getElementById('bookingLayer');
+                if (!myLayer) {
+myLayer = document.createElement('div');
+myLayer.id = 'bookingLayer';
+myLayer.style.fontSize = "60px";
+myLayer.style.fontweight = 'bold';
+myLayer.style.position = 'absolute';
+myLayer.style.left = '0px';
+myLayer.style.top = '0px';
+myLayer.style.width = '70px';
+myLayer.style.height = '50px';
+myLayer.style.padding = '10px';
+myLayer.style.background = 'rgba(255, 255, 0, 0.5)'; // Yellow with 50% opacity
+myLayer.style.color = '#000'; // Optional: make text black for contrast
+myLayer.style.zIndex = '9999'; // Ensure it appears on top
+document.body.appendChild(myLayer);
+                }
+ 
+                                // Inject into the actual vehicle number field
+                const vehicleInput = document.getElementById('ccMain_txtVehzNo');
+                if (vehicleInput) {
+                    vehicleInput.value = vehicleNumber;
+                    vehicleInput.dispatchEvent(new Event('change', { bubbles: true }));
+                    console.log("✅ Vehicle number injected:", vehicleNumber);
+                } else {
+                    console.warn("⚠️ Vehicle number input not found!");
+                }
+                // Display count value
+                var countElement = document.createElement('div');
+                countElement.textContent = countValue;
+                myLayer.textContent = ''; // Clear previous content
+                myLayer.appendChild(countElement);
+            })
+            .catch(error => {
+                console.error('Error fetching count value:', error);
+            });
     }
-  }  /*** PAGE ENTRY ***/
-
-  window.addEventListener('DOMContentLoaded', () =>{
-    sessionStorage.setItem("sandAutoFilled", "no");
-    initAutomationAtScheduledTime();
-  });
-}) ();
+ 
+    // Function to check if lbltime reaches "Timer : 120"
+    function checkTimerValue() {
+        const lbltime = document.getElementById('lbltime');
+        if (lbltime && lbltime.innerHTML.trim() === 'Timer : 120') {
+            // If the timer value is "Timer : 120", fetch and display data
+            fetchAndDisplayData();
+            // Disconnect the observer to stop watching for changes
+            observer.disconnect();
+        }
+    }
+ 
+    // Set up a MutationObserver to watch for changes in the DOM
+    const observer = new MutationObserver(checkTimerValue);
+ 
+    // Specify the target node and configuration for the observer
+    const targetNode = document.getElementById('lbltime'); // Only observe lbltime changes
+    const config = { childList: true, subtree: true };
+ 
+    // Start observing the target node for changes
+    observer.observe(targetNode, config);
+ 
+})()
