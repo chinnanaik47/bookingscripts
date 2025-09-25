@@ -1,10 +1,18 @@
+// ==UserScript==
+// @name     Sand Bazar OWN TRANSPORT BOOKING Ultra-Fast Auto-Click with Only "No Records Found" Handler (No Retry Limit)
+// @namespace  http://tampermonkey.net/
+// @version   3.3
+// @description Starts retry clicking OWN TRANSPORT BOOKING at given precise time with millisecond accuracy, retries booking page if "No Records Found" appears, no retry time limit
+// @match    https://sand.telangana.gov.in/TGSandBazaar/InnerPages/SandBazaarBookingNew.aspx
+// @grant    none
+// ==/UserScript==
 (function () {
   'use strict';
   /*** USER CONFIG ***/
   const RETRY_START_TIME_STR = '09:59:30:000'; // Format: HH:MM:SS:ms
   const CLICK_RETRY_INTERVAL = 1; // ms between retries when clicking transport link
   const NO_RECORDS_TEXT = 'No Records Found'; // Text to trigger reload
-  const TARGET_TEXT = 'Bowrampet SB Coarse Scap';
+  const TARGET_TEXT = 'Adibatla SB Fine';
   const NO_RECORDS_RETRY_INTERVAL = 10;
   let retryIntervalId = null;
   let clickDone = false;
@@ -60,7 +68,8 @@
     }
   }  /*** PAGE ENTRY ***/
 
-    console.log("github code")
+  window.addEventListener('DOMContentLoaded', () =>{
     sessionStorage.setItem("sandAutoFilled", "no");
     initAutomationAtScheduledTime();
+  });
 }) ();
