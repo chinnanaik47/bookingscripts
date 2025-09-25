@@ -60,6 +60,7 @@
     }, NO_RECORDS_RETRY_INTERVAL);
   }
   function initAutomationAtScheduledTime() {
+    console.log("initAutomationAtScheduledTime");
     const delay = getDelayUntilStart();
     if (delay == 0) {
       startRetryClicking();
@@ -68,8 +69,7 @@
     }
   }  /*** PAGE ENTRY ***/
 
-  window.addEventListener('DOMContentLoaded', () =>{
     sessionStorage.setItem("sandAutoFilled", "no");
     initAutomationAtScheduledTime();
-  });
+
 }) ();
