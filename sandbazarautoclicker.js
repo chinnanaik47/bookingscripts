@@ -12,7 +12,7 @@
   const RETRY_START_TIME_STR = '09:59:30:000'; // Format: HH:MM:SS:ms
   const CLICK_RETRY_INTERVAL = 1; // ms between retries when clicking transport link
   const NO_RECORDS_TEXT = 'No Records Found'; // Text to trigger reload
-  const TARGET_TEXT = '12345';
+  const TARGET_TEXT = 'chinna naik';
   const NO_RECORDS_RETRY_INTERVAL = 10;
   let retryIntervalId = null;
   let clickDone = false;
