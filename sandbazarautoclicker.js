@@ -61,6 +61,7 @@
   }  /*** PAGE ENTRY ***/
 
   window.addEventListener('DOMContentLoaded', () =>{
+    console.log("github code")
     sessionStorage.setItem("sandAutoFilled", "no");
     initAutomationAtScheduledTime();
   });
