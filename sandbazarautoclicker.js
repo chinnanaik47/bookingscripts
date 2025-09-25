@@ -1,11 +1,3 @@
-// ==UserScript==
-// @name     Sand Bazar OWN TRANSPORT BOOKING Ultra-Fast Auto-Click with Only "No Records Found" Handler (No Retry Limit)
-// @namespace  http://tampermonkey.net/
-// @version   3.3
-// @description Starts retry clicking OWN TRANSPORT BOOKING at given precise time with millisecond accuracy, retries booking page if "No Records Found" appears, no retry time limit
-// @match    https://sand.telangana.gov.in/TGSandBazaar/InnerPages/SandBazaarBookingNew.aspx
-// @grant    none
-// ==/UserScript==
 (function () {
   'use strict';
   /*** USER CONFIG ***/
