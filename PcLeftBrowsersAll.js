@@ -1,6 +1,6 @@
 (function() {
-document.getElementsByClassName('Dropdown')[0].value = 24;
-  PopulateGrid(24);
+document.getElementsByClassName('Dropdown')[0].value = 45;
+  PopulateGrid(45);
 
 var intId = setInterval(function(){    
 for(var i=0;i<30;i++){
