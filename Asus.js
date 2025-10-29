@@ -7,7 +7,7 @@
 // @match        https://onlinebooking.sand.telangana.gov.in/Order/NEWBOOKING.aspx?KLM=*
 // @grant        none
 // ==/UserScript==
-// REMOVE YOUR STOCKYARD SELECTION SCRIPT AND USE THIS
+// REMOVE YOUR STOCKYARD SELECTION SCRIPT AND USE THIS 
 
 var SSOTP_VERSION = 3; // enter your ssotp version from 0 to 100
 var TOKEN = "93R9U2"; // enter token
