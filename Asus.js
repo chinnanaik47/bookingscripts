@@ -1,11 +1,11 @@
 (function() {
-document.getElementsByClassName('Dropdown')[0].value = 24;
-  PopulateGrid(24);
+document.getElementsByClassName('Dropdown')[0].value = 45;
+  PopulateGrid(45);
 
 var intId = setInterval(function(){    
 for(var i=0;i<30;i++){
     var data = document.getElementsByClassName("GridviewScrollItem")[i].cells[2].innerHTML;
-    if( data.indexOf("Padmagudem II SBAB5 (2025)") != -1) {        
+    if( data.indexOf("Ankannagudem-ISBA(2025)") != -1) {        
         $("input[type='radio']")[i].click();
         clearInterval(intId);
         break;
