@@ -19,6 +19,11 @@
         "TG26T4599",        // count = 4
         "AP26TK2292",       // count = 5
         "TS30T3599"         // count = 6
+        "TS30T3599",       // count = 7
+        "AP26TK2292",       // count = 8
+        "TG26T4599",        // count = 9
+        "AP26TK2292",       // count = 10
+        "TS30T3599"         // count = 11
     ];
  
     // Function to fetch count value from API and display it
