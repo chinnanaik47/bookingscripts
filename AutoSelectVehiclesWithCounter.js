@@ -16,12 +16,12 @@
         "",                 // index 0 unused
         "TG26T1135",        // count = 2
         "AP24TB3469",        // count = 3
-        "TS05UC9429",        // count = 4
-        "TS07UE6992",       // count = 5
+        "TS07UE6992",        // count = 4
+        "TS30T3677",       // count = 5
         "TG26T1135",       // count = 6
         "AP24TB3469",        // count = 7
         "TS07UE6992",        // count = 8
-        "TS07UE7587",        // count = 9
+        "TS30T3677",        // count = 9
         "TS30T3677",       // count = 10
         "TS07UE6992",        // count = 11
         "TG26T1135"         // count = 12
