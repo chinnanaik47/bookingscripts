@@ -17,7 +17,7 @@
         "AP24TB3469",        // count = 2
         "TS30T3677",        // count = 3
         "TS30T0711",        // count = 4
-        "TS30T3677",       // count = 5
+        "AP27Y5337",       // count = 5
         "TG26T1135",       // count = 6
         "AP24TB3469",        // count = 7
         "TS07UE6992",        // count = 8
