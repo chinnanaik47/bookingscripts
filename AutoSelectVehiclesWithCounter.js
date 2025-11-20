@@ -17,8 +17,8 @@
         "TS05UC9429",        // count = 2
         "TS05UC9429",        // count = 3
         "TG26T4599",        // count = 4
-        "AP26TK2292",       // count = 5
-        "TS30T3599",       // count = 6
+        "TS05UC9429",       // count = 5
+        "TS05UC9429",       // count = 6
         "TS05UC9429",        // count = 7
         "TS07UE6992",        // count = 8
         "TS30T3677",        // count = 9
