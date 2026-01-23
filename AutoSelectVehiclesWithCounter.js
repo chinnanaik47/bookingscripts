@@ -15,8 +15,8 @@
         "",  
         "",                 // index 0 unused
         "TS05UC9429",        // count = 2
-        "TG22T3949",        // count = 3
-        "TS26TA6469",        // count = 4
+        "TS05UC9429",        // count = 3
+        "TS05UC9429",        // count = 4
         "TG29T7576",       // count = 5
         "TS30T3599",       // count = 6
         "TS15UD2077",        // count = 7
